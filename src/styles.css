@@ -1,0 +1,303 @@
+/* ========================= */
+/* ======= Variables ======= */
+/* ========================= */
+
+:root {
+  /* Colors */
+  --white: #fff;
+  --light-gray: #f2f2f4;
+  --medium-gray: #b7b7b8;
+  --dark-gray: #4c4c4f;
+  --black: #000;
+  --green: #2a8643;
+  --blue: #2b79bf;
+  --red: #ef2039;
+  
+  /* Breakpoints */
+  --small: 576px;
+  --medium: 768px;
+  --large: 1024px;
+  --xlarge: 1200px;
+  --xxlarge: 1440px;
+
+  /* Grid */
+  --gutter: 16px;
+
+  /* Shadows */
+  --box-shadow: 0 2px 2px 0 rgb(77 77 79 / 8%), 0 0 2px 0 rgb(77 77 79 / 16%);
+}
+
+body {
+  background-color: var(--light-gray);  
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+/* ========================== */
+/* ========== Grid ========== */
+/* ========================== */
+
+.container {
+  height: 100%;
+  margin: auto;
+  max-width: 1100px;
+  padding: 0 var(--gutter);
+  box-sizing: border-box;
+  /* background: green; */
+}
+
+.row {
+  display: flex;
+  height: 100%;
+  /* background: red; */
+  align-items: center;
+}
+
+.row.md:xxx {
+  flex-direction:column
+}
+
+.col {
+  margin: 0 var(--gutter);
+}
+
+.col:first-child {
+  margin-left: 0;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+/* ============================ */
+/* ========== Header ========== */
+/* ============================ */
+
+.header {
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  height: 80px;
+}
+
+.header .row {
+  justify-content: space-between;
+}
+
+.logo {
+  width: 180px;
+}
+
+.help {
+  color: var(--medium-gray);
+  font-size: 12px;
+}
+
+.steps {
+  margin-bottom: 24px;
+}
+
+.steps h2 {
+  margin: 0;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--medium-gray);
+  font-weight: 500;
+}
+
+.steps h2.active {
+  color: var(--dark-gray);
+}
+
+.steps h2::after {
+  content: "/";
+  color: var(--medium-gray);
+  margin: 0 12px;
+}
+
+.steps h2:last-child::after {
+  content: "";
+}
+
+/* ========================= */
+/* ====== Page layout ====== */
+/* ========================= */
+
+main {
+  margin-top: calc(var(--gutter) * 3)
+}
+
+main .row {
+  align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .row.content {
+    flex-direction: column;
+  }
+
+  .row.content .col {
+    margin: 0 0 var(--gutter);
+    width: 100%;
+  }
+}
+
+main section, main aside {
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+}
+
+main section {
+  flex: 1;
+}
+
+main aside {
+  margin-bottom: 24px;
+  padding: 16px ;
+  width: 343px;
+}
+
+/* ======================== */
+/* ========= Form ========= */
+/* ======================== */
+
+form {
+  padding: 16px 16px 32px;
+}
+
+.form-title {
+  border-bottom: 1px solid var(--light-gray);
+  padding: 24px;
+}
+
+.form-title h1 {
+  color: var(--black);
+  font-size: 16px;
+  margin: 0;
+}
+
+.field {
+  margin-bottom: 36px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label {
+  color: var(--medium-gray);
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.field.error label {
+  color: var(--red);
+}
+
+.field input {
+  background-color: var(--light-gray);
+  border: none;
+  box-shadow: inset 0px -2px 0px 0px rgb(219, 219, 221);
+  box-sizing: border-box;  
+  color: var(--dark-gray);
+  font-size: 14px;
+  height: 40px;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.field input:focus {
+  border-bottom: 2px solid var(--blue);
+  outline: none;
+  box-shadow: none;
+}
+
+.field.error input {
+  border-bottom: 2px solid var(--red);
+  box-shadow: none;
+}
+
+.field span {
+  color: var(--medium-gray);
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 4px;
+}
+
+.field.error span {
+  color: var(--red);
+}
+
+/* ======================= */
+/* ======= Sidebar ======= */
+/* ======================= */
+
+main aside h2 {
+  color: var(--black);
+  font-size: 16px;
+  margin: 0 0 8px;
+  line-height: 24px;
+}
+
+main aside span {
+  color: var(--dark-gray);
+  display: block;
+  font-size: 14px;
+}
+
+main aside hr {
+  border-top: 1px dashed var(--light-gray);
+  margin: 36px 0 20px;
+}
+
+.to-pay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.to-pay h3 {
+  color: var(--black);
+  font-size: 14px;
+  margin: 0;
+}
+
+.to-pay h3:last-child {
+  font-size: 16px;
+}
+
+button {
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.secure-notice {
+  display: inline-block;
+  text-align: center;
+  color: var(--dark-gray);
+  font-weight: 600;
+}
+
+main a {
+  color: var(--blue);
+  font-size: 12px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+main a:hover {
+  text-decoration: underline;
+}

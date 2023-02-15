@@ -1,0 +1,15 @@
+{
+  "name": "payhost-form",
+  "version": "1.0.0",
+  "description": "PayHost add card form",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec \"http-server src -c-1\""
+  },
+  "author": "takealot.com",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^2.0.20"
+  }
+}
