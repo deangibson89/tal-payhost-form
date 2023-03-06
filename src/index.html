@@ -1,101 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE" />
 
-  <link rel="stylesheet" href="styles.css">
-  <link rel="shortcut icon" sizes="16x16" type="image/x-icon" href="images/favicon.ico">
-  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      sizes="16x16"
+      type="image/x-icon"
+      href="images/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
 
-  <title>Checkout | Add Card - TAKEALOT</title>
-</head>
+    <title>Checkout | Add Card - TAKEALOT</title>
+  </head>
 
-<body>
-  <header class="header">
-    <div class="container">
-      <div class="row">
-        <img src="images/logo.svg" alt="logo" class="logo" />
-        <span class="help">Need help? Call 087 362 8000</span>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <img src="images/logo.svg" alt="logo" class="logo" />
+          <span class="help">Need help? Call 087 362 8000</span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <div class="container">
-      <div class="row steps">
-
-        <h2>Delivery</h2>
-        <h2 class="active">Payment</h2>
-        <h2>Confirmation</h2>
-        
-      </div>
-
-      <div class="row content">
-
-        <!-- Form -->
-        <section class="col">
-          <div class="form-title">
+    <header class="mobile-header">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <a href="" #>
+              <img src="images/back-arrow.svg" alt="back" />
+            </a>
+          </div>
+          <div class="col">
             <h1>Add New Card</h1>
           </div>
-
-          <form>
-            <div class="field">
-              <label for="card-name" >Name on Card</label>
-              <input name="card-name" title="card-name" type="text" />
-            </div>
-
-            <div class="field">
-              <label for="card-number" >Card Number</label>
-              <input name="card-number" title="card-number" type="text" />
-            </div>
-
-            <div class="field error">
-              <label for="ccv" >CCV</label>
-              <input name="ccv" title="ccv" type="text" />
-              <span>Please enter the CVV number displayed on your card</span>
-            </div>
-
-            <div class="field">
-              <label for="budget-period" >Straight/Budget</label>
-              <input 
-                name="budget-period" 
-                title="budget-period" 
-                type="text" 
-                value="Straight"
-                readonly
-              />
-              <span>South African issued cards only</span>
-            </div>
-          </form>
-        </section>
-        
-        <!-- Sidebar -->
-        <div class="col">
-          <aside>
-            <h2>Order Summary</h2>
-            <span>Status: Awaiting Payment</span>
-  
-            <hr/>
-  
-            <div class="to-pay">
-              <h3>TO PAY:</h3>
-              <h3>R 8,599</h3>
-            </div>
-  
-            <button type="submit">PAY R 8,599</button>
-  
-            <span class="secure-notice">Secure Checkout</span>
-          </aside>
-  
-          <a href="#">Change Payment Method</a>
+          <div class="col">
+            <a href="" # class="cancel">Cancel</a>
+          </div>
         </div>
 
+        <div class="row steps">
+          <div class="col">
+            <h2>Delivery</h2>
+          </div>
+          <div class="col active">
+            <h2>Payment</h2>
+          </div>
+          <div class="col">
+            <h2>Confirmation</h2>
+          </div>
+        </div>
       </div>
-    </div>
-  </main>
+    </header>
 
-</body>
+    <main>
+      <div class="container">
+        <div class="row steps">
+          <h2>Delivery</h2>
+          <h2 class="active">Payment</h2>
+          <h2>Confirmation</h2>
+        </div>
+
+        <div class="row content">
+          <!-- Form -->
+          <section class="col">
+            <div class="form-title">
+              <h1>Add New Card</h1>
+            </div>
+
+            <form>
+              <div class="field">
+                <input name="card-name" title="card-name" type="text" />
+                <label for="card-name">Name on Card</label>
+              </div>
+
+              <div class="field">
+                <input name="card-number" title="card-number" type="text" />
+                <label for="card-number">Card Number</label>
+              </div>
+
+              <div class="expiry-date">
+                <div class="field">
+                  <select name="expiry-month" title="expiry-month">
+                    <option>Month</option>
+                  </select>
+                  <label for="expiry-month">Expiry date</label>
+                </div>
+                <div class="field">
+                  <select name="expiry-year" title="expiry-year">
+                    <option>Year</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field error">
+                <span>Please enter the CVV number displayed on your card</span>
+                <input name="cvv" title="cvv" type="text" />
+                <label for="cvv">CVV</label>
+                <a class="cvv-help">
+                  <img src="images/help.svg" alt="help" />
+                </a>
+              </div>
+
+              <div class="field">
+                <span>South African issued cards only</span>
+                <input
+                  name="budget-period"
+                  title="budget-period"
+                  type="text"
+                  value="Straight"
+                  readonly
+                />
+                <label for="budget-period">Straight/Budget</label>
+              </div>
+            </form>
+          </section>
+
+          <!-- Sidebar -->
+          <div class="col">
+            <aside>
+              <h2>Order Summary</h2>
+              <span>Status: Awaiting Payment</span>
+
+              <hr />
+
+              <div class="to-pay">
+                <h3>TO PAY:</h3>
+                <h3>R 8,599</h3>
+              </div>
+
+              <button type="submit">PAY R 8,599</button>
+
+              <div class="secure-notice">
+                <img src="images/lock.svg" alt="secure" />
+                <span>Secure Checkout</span>
+              </div>
+            </aside>
+
+            <a href="#">Change Payment Method</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 
+    This dialog should show when the user taps 
+    the "?" (help) icon in the CVV field.
+
+    NOTE: The CSS hides this on devices with min 
+    viewport widths of 1024 and higher. 
+
+    Uncomment below to render obviously
+    -->
+
+    <!-- <aside class="cvv-dialog">
+      <div>
+        <button class="close" title="close" type="button">
+          <img src="images/close.svg" alt="close" />
+        </button>
+
+        <h6>VISA, MASTERCARD & DINER'S CLUB</h6>
+        <p>The 3 digit CVV number can be found at the back of the card.</p>
+
+        <h6>AMERICAN EXPRESS</h6>
+        <p>The 4 digit CVV number can be found at the front of the card.</p>
+
+        <button type="button">Close</button>
+      </div>
+    </aside> -->
+
+  </body>
 </html>

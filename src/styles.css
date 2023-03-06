@@ -6,13 +6,15 @@
   /* Colors */
   --white: #fff;
   --light-gray: #f2f2f4;
+  --mild-gray: #dbdbdd;
   --medium-gray: #b7b7b8;
   --dark-gray: #4c4c4f;
   --black: #000;
   --green: #2a8643;
+  --dark-green: #006736;
   --blue: #2b79bf;
   --red: #ef2039;
-  
+
   /* Breakpoints */
   --small: 576px;
   --medium: 768px;
@@ -27,8 +29,9 @@
   --box-shadow: 0 2px 2px 0 rgb(77 77 79 / 8%), 0 0 2px 0 rgb(77 77 79 / 16%);
 }
 
+html,
 body {
-  background-color: var(--light-gray);  
+  background-color: var(--light-gray);
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   margin: 0;
 }
@@ -43,18 +46,12 @@ body {
   max-width: 1100px;
   padding: 0 var(--gutter);
   box-sizing: border-box;
-  /* background: green; */
 }
 
 .row {
   display: flex;
   height: 100%;
-  /* background: red; */
   align-items: center;
-}
-
-.row.md:xxx {
-  flex-direction:column
 }
 
 .col {
@@ -70,7 +67,7 @@ body {
 }
 
 /* ============================ */
-/* ========== Header ========== */
+/* ===== Header (Desktop) ===== */
 /* ============================ */
 
 .header {
@@ -92,11 +89,11 @@ body {
   font-size: 12px;
 }
 
-.steps {
+main .steps {
   margin-bottom: 24px;
 }
 
-.steps h2 {
+main .steps h2 {
   margin: 0;
   display: inline-block;
   font-size: 20px;
@@ -105,18 +102,135 @@ body {
   font-weight: 500;
 }
 
-.steps h2.active {
+main .steps h2.active {
   color: var(--dark-gray);
 }
 
-.steps h2::after {
+main .steps h2::after {
   content: "/";
   color: var(--medium-gray);
   margin: 0 12px;
 }
 
-.steps h2:last-child::after {
+main .steps h2:last-child::after {
   content: "";
+}
+
+/* Small down */
+@media (max-width: 576px) {
+  .header {
+    display: none;
+  }
+
+  main .steps {
+    display: none;
+  }
+}
+
+/* ============================ */
+/* ===== Header (Mobile) ====== */
+/* ============================ */
+
+.mobile-header {
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+}
+
+.mobile-header .container {
+  padding-bottom: 16px;
+}
+
+.mobile-header h1 {
+  color: var(--black);
+  font-size: 16px;
+  text-align: center;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 0;
+}
+
+.mobile-header h1 {
+  padding: var(--gutter);
+}
+
+.mobile-header .col {
+  min-width: 40px;
+}
+
+.mobile-header .col:nth-child(2) {
+  flex: 1;
+}
+
+.mobile-header a {
+  text-decoration: none;
+}
+
+.cancel {
+  color: var(--blue);
+  font-size: 12px;
+}
+
+.mobile-header .steps {
+  background-color: var(--light-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 28px;
+  position: relative;
+}
+
+.mobile-header .steps h2 {
+  font-size: 12px;
+  text-align: center;
+  color: var(--medium-gray);
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-header .steps .col {
+  flex: 1;
+  margin: 0;
+  position: relative;
+}
+
+.mobile-header .steps .col:nth-child(1):before,
+.mobile-header .steps .col:nth-child(1):after,
+.mobile-header .steps .col:nth-child(2):before,
+.mobile-header .steps .col:nth-child(2):after {
+  background: var(--light-gray);
+  content: "";
+  height: 50%;
+  position: absolute;
+  left: 3px;
+  width: 100%;
+}
+
+.mobile-header .steps .col:nth-child(2):before,
+.mobile-header .steps .col:nth-child(2):after {
+  background: var(--dark-gray);
+}
+
+.mobile-header .steps .col:nth-child(1):before,
+.mobile-header .steps .col:nth-child(2):before {
+  top: 0;
+  transform: skewX(30deg);
+}
+
+.mobile-header .steps .col:nth-child(1):after,
+.mobile-header .steps .col:nth-child(2):after {
+  bottom: 0;
+  transform: skewX(-30deg);
+}
+
+.mobile-header .steps .active h2 {
+  color: var(--white);
+}
+
+/* Small up */
+@media (min-width: 576px) {
+  .mobile-header {
+    display: none;
+  }
 }
 
 /* ========================= */
@@ -124,25 +238,15 @@ body {
 /* ========================= */
 
 main {
-  margin-top: calc(var(--gutter) * 3)
+  margin-top: calc(var(--gutter) * 3);
 }
 
 main .row {
   align-items: flex-start;
 }
 
-@media (max-width: 1024px) {
-  .row.content {
-    flex-direction: column;
-  }
-
-  .row.content .col {
-    margin: 0 0 var(--gutter);
-    width: 100%;
-  }
-}
-
-main section, main aside {
+main section,
+main aside {
   background-color: var(--white);
   box-shadow: var(--box-shadow);
 }
@@ -153,8 +257,57 @@ main section {
 
 main aside {
   margin-bottom: 24px;
-  padding: 16px ;
-  width: 343px;
+  padding: 24px 16px;
+  min-width: 343px;
+  box-sizing: border-box;
+}
+
+/* Large down */
+@media (max-width: 1024px) {
+  .row.content {
+    flex-direction: column;
+  }
+
+  .row.content .col {
+    margin: 0 0 var(--gutter);
+    width: 100%;
+  }
+
+  main aside {
+    width: 100%;
+  }
+}
+
+/* Small down */
+@media (max-width: 576px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  main section,
+  main aside {
+    box-shadow: none;
+  }
+
+  main aside {
+    margin-bottom: 0;
+  }
+
+  main {
+    background-color: var(--white);
+    height: calc(100% - 108px);
+    margin-top: 10px;
+  }
+
+  main .container {
+    padding: 0;
+  }
+
+  .row.content .col:last-child {
+    position: fixed;
+    bottom: 0;
+  }
 }
 
 /* ======================== */
@@ -176,8 +329,29 @@ form {
   margin: 0;
 }
 
+.expiry-date {
+  align-items: center;
+  display: flex;
+}
+
+.expiry-date .field {
+  flex: 1;
+}
+
+.expiry-date .field:first-child {
+  margin-right: calc(var(--gutter) / 2);
+}
+
+.expiry-date .field:last-child {
+  margin-top: -12px;
+  margin-left: calc(var(--gutter) / 2);
+}
+
 .field {
   margin-bottom: 36px;
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
 }
 
 .field:last-child {
@@ -190,17 +364,22 @@ form {
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 8px;
+  line-height: 16px;
 }
 
 .field.error label {
-  color: var(--red);
+  color: var(--red) !important;
 }
 
-.field input {
+.field input,
+.field select {
   background-color: var(--light-gray);
   border: none;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--white);
   box-shadow: inset 0px -2px 0px 0px rgb(219, 219, 221);
-  box-sizing: border-box;  
+  box-sizing: border-box;
   color: var(--dark-gray);
   font-size: 14px;
   height: 40px;
@@ -208,10 +387,21 @@ form {
   width: 100%;
 }
 
-.field input:focus {
-  border-bottom: 2px solid var(--blue);
+.field select {
+  appearance: none;
+  background: var(--light-gray) url("images/drop-down-arrow.svg") no-repeat 100%
+    25%;
+}
+
+.field input:focus,
+.field select:focus {
+  border-bottom-color: var(--blue);
   outline: none;
   box-shadow: none;
+}
+
+.field input:focus ~ label {
+  color: var(--blue);
 }
 
 .field.error input {
@@ -229,6 +419,39 @@ form {
 
 .field.error span {
   color: var(--red);
+}
+
+a.cvv-help {
+  position: absolute;
+  right: 10px;
+  top: 33px;
+}
+
+a.cvv-help:hover::after {
+  cursor: pointer;
+  content: "VISA, MASTERCARD & DINER'S CLUB \a The 3 digit CVV number can be found at the back of the \a card. \a\a AMERICAN EXPRESS \a The 4 digit CVV number can be found at the front of the \a card.";
+  background: var(--dark-gray);
+  min-width: 100px;
+  white-space: pre;
+  padding: var(--gutter);
+  position: absolute;
+  color: var(--white);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+/* Small down */
+@media (max-width: 576px) {
+  .form-title {
+    display: none;
+  }
+}
+
+/* Large down */
+@media (max-width: 1024px) {
+  a.cvv-help:hover::after {
+    display: none;
+  }
 }
 
 /* ======================= */
@@ -249,7 +472,9 @@ main aside span {
 }
 
 main aside hr {
-  border-top: 1px dashed var(--light-gray);
+  border-top: 1px dashed var(--mild-gray);
+  border-bottom: 0;
+  border-left: 0;
   margin: 36px 0 20px;
 }
 
@@ -277,17 +502,29 @@ button {
   height: 40px;
   width: 100%;
   margin-bottom: 8px;
+  transition: background-color 300ms;
 }
 
 button:hover {
+  background-color: var(--dark-green);
   cursor: pointer;
 }
 
 .secure-notice {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secure-notice span {
   text-align: center;
   color: var(--dark-gray);
   font-weight: 600;
+}
+
+.secure-notice img {
+  height: 14px;
+  margin-right: 6px;
 }
 
 main a {
@@ -300,4 +537,88 @@ main a {
 
 main a:hover {
   text-decoration: underline;
+}
+
+/* Small down */
+@media (max-width: 576px) {
+  main aside h2,
+  main aside span,
+  main aside hr,
+  main aside .to-pay {
+    display: none;
+  }
+
+  .secure-notice {
+    display: none;
+  }
+}
+
+/* Medium down */
+@media (max-width: 768px) {
+  button {
+    border-radius: 20px;
+  }
+}
+
+/* ======================= */
+/* ====== CVV Dialog ===== */
+/* ======================= */
+
+aside.cvv-dialog {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+aside.cvv-dialog div {
+  background-color: var(--white);
+  padding: var(--gutter);
+  text-align: center;
+  border-radius: 4px;
+  max-width: 360px;
+  position: relative;
+}
+
+aside.cvv-dialog div button.close {
+  background: none;
+  position: absolute;
+  padding: 0;
+  width: auto;
+  margin: 0;
+  top: -42px;
+  right: -4px;
+}
+
+aside.cvv-dialog h6,
+aside.cvv-dialog p {
+  color: var(--dark-gray);
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+aside.cvv-dialog p {
+  margin-bottom: var(--gutter);
+}
+
+aside.cvv-dialog h6 {
+  margin-bottom: 4px;
+}
+
+aside.cvv-dialog div button {
+  background-color: var(--blue);
+}
+
+/* Medium up */
+@media (min-width: 768px) {
+  aside.cvv-dialog {
+    display: none;
+  }
 }
